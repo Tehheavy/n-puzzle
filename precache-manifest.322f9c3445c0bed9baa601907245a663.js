@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b31a79c139e35dd08750bffc3ee024ef",
+    "revision": "6f1ea7073f4b2e5783fa16a423d7e88b",
     "url": "/n-puzzle/index.html"
   },
   {
-    "revision": "ec00ad97ddc776fdd23f",
-    "url": "/n-puzzle/static/css/main.5f361e03.chunk.css"
+    "revision": "1b0077815bb36a8cb830",
+    "url": "/n-puzzle/static/css/main.d91752f5.chunk.css"
   },
   {
-    "revision": "3508dd12663b2042ef7f",
-    "url": "/n-puzzle/static/js/2.0f47ca7f.chunk.js"
+    "revision": "2dfd827a7991eef4f984",
+    "url": "/n-puzzle/static/js/2.7f63bd00.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/n-puzzle/static/js/2.0f47ca7f.chunk.js.LICENSE.txt"
+    "url": "/n-puzzle/static/js/2.7f63bd00.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ec00ad97ddc776fdd23f",
-    "url": "/n-puzzle/static/js/main.3887e237.chunk.js"
+    "revision": "1b0077815bb36a8cb830",
+    "url": "/n-puzzle/static/js/main.94a45a10.chunk.js"
   },
   {
     "revision": "c87f1bc21a994fb6336b",
