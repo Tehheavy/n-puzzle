@@ -4,7 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {  
-    
+  const [forceRerender,setRerender]=useState(false);
+  const [size,setSize]=useState(3);
   const [board, setBoard] = useState([<div style={{height:''+800/3+'px',width:''+800/3+'px',overflow:'hidden'}}>
     <img style={{}} src='https://i.imgur.com/YLWsY4G.jpg'></img>
   </div>]);
@@ -31,7 +32,9 @@ function App() {
           </div> {/* game container*/}
           {/* <img style={{height:'50vh'}} src='https://i.imgur.com/YLWsY4G.jpg'></img> */}
           {/* alex */}
-          <GameBoard></GameBoard>
+          <GameBoard rerender={forceRerender} size={size}></GameBoard>
+          {/* <button style={{borderRadius:'5px',backgroundColor:'gray'}} onClick={e=>{setSize(prev=>prev+1)
+          console.log(size)}}>test</button> */}
       </header>
     </div>
   );

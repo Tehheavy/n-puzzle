@@ -1,0 +1,11 @@
+.fancyButton {
+    background-color: rgb(88, 86, 228);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    font-size: 100%;
+    cursor: pointer;
+  }
