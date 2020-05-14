@@ -25,6 +25,13 @@ function GameBoard(props) {
         // setRerender(!temppos)
 
     }
+    const convertToXY=(number)=>{
+        let y=Math.floor(number%props.size);
+        let x=Math.floor(number/props.size)
+        console.log('x,y',x,y);
+        let res=[x,y]
+        return res;
+    }
     const sumInversions2=(random)=>{
         console.log('random is ',random)
         let count=0;
@@ -53,15 +60,22 @@ function GameBoard(props) {
     }
     while(!isSolvable2(tempArray))
         console.log(tempArray)
-
+        for(let i=0;i<tempArray.length;i++){
+            console.log(tempArray[i]);
+            convertToXY(tempArray[i]);
+            console.log('test',convertToXY(i)[0])
+        }
         var oldBoard=[...board];
         var newBoard=[...board];
         for(let i=0;i<oldBoard.length-1;i++){
             let img = oldBoard[i].props.img;
-            let newItem1 = <GameBoardItem id={i} size={props.size} key={i} img={img} value={i} i={oldBoard[tempArray[i]].props.i} j={oldBoard[tempArray[i]].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
+            let newItem1 = <GameBoardItem id={i} size={props.size} key={i} img={img} value={i} i={convertToXY(tempArray[i])[0]} j={convertToXY(tempArray[i])[1]} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
             newBoard[i]=newItem1;
             console.log('index=',i,'random is',tempArray[i],'(i,j)=',oldBoard[tempArray[i]].props.i,oldBoard[tempArray[i]].props.j,oldBoard[tempArray[i]])
         }
+        let img = oldBoard[oldBoard.length-1].props.img;
+        let newItem1 = <GameBoardItem id={props.size*props.size-1} size={props.size} key={props.size*props.size-1} img={img} value={(props.size*props.size-1)} i={props.size-1} j={props.size-1} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
+        newBoard[props.size*props.size-1]=newItem1;
         console.log('tempBoard is',tempArray)
         console.log('newBoard is',newBoard)
         console.log('oldBoard is',board)
