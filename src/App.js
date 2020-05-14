@@ -19,6 +19,10 @@ function App() {
      setTest(prev=>temp)
      console.log(temp)
    }
+   const nextLevel=()=>{
+     setSize(prev=>prev+1)
+
+   }
   return (
     <div className="App">
       <header className="App-header">
@@ -32,7 +36,7 @@ function App() {
           </div> {/* game container*/}
           {/* <img style={{height:'50vh'}} src='https://i.imgur.com/YLWsY4G.jpg'></img> */}
           {/* alex */}
-          <GameBoard rerender={forceRerender} size={size}></GameBoard>
+          <GameBoard nextLevel={nextLevel} key={size} rerender={forceRerender} size={size}></GameBoard>
           {/* <button style={{borderRadius:'5px',backgroundColor:'gray'}} onClick={e=>{setSize(prev=>prev+1)
           console.log(size)}}>test</button> */}
       </header>

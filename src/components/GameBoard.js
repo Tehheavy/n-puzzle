@@ -7,6 +7,7 @@ function GameBoard(props) {
     const [position, setPosition] = useState(props.size * props.size - 1)
     const [rerender, setRerender] = useState(props.rerender);
     const [board2, setBoard2] = useState([])
+    const [shuffled, setShuffled]= useState(false);
 
     const handleClick = (e) => {
         if (e.path[1].id) {
@@ -67,10 +68,30 @@ function GameBoard(props) {
         setBoard(prev => newBoard)
         let temppos = rerender;
         setRerender(!temppos)
+        setShuffled(prev=>true)
+    }
+    const checkSolved = () => {
+        
+        let count=0;
+        for(let i=0;i<props.size;i++){
+            for(let j=0;j<props.size;j++){
+                console.log(count,i,j)
+                if(board[count].props.i==i&&board[count].props.j==j){
+                    count++;
+                }
+            }
+        }
+        if(count===board.length&&shuffled===true){
+            console.log('win')
+            setShuffled(prev=>false);
+            alert('level '+(props.size-2)+' complete!')
+            props.nextLevel();
+        }
+        console.log('count is ',count)
     }
     const swap = (index1, index2) => {
 
-
+        let tempboard = board;
         // let i=board[index1].props.i;
         // let j=board[index1].props.j;
         // let value=board[index1].props.value;
@@ -98,7 +119,6 @@ function GameBoard(props) {
                 let img2 = board[index2].props.img;
                 let newItem2 = <GameBoardItem id={index2} size={props.size} key={index2} img={img2} value={index2} i={board[index1].props.i} j={board[index1].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
 
-                let tempboard = board;
                 // tempboard.pop();
                 tempboard[index1] = newItem1;
                 tempboard[index2] = newItem2;
@@ -114,7 +134,6 @@ function GameBoard(props) {
                 let img2 = board[index2].props.img;
                 let newItem2 = <GameBoardItem id={index2} size={props.size} key={index2} img={img2} value={index2} i={board[index1].props.i} j={board[index1].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
 
-                let tempboard = board;
                 // tempboard.pop();
                 tempboard[index1] = newItem1;
                 tempboard[index2] = newItem2;
@@ -129,8 +148,6 @@ function GameBoard(props) {
                 let newItem1 = <GameBoardItem id={index1} size={props.size} key={index1} img={img} value={index1} i={board[index2].props.i} j={board[index2].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
                 let img2 = board[index2].props.img;
                 let newItem2 = <GameBoardItem id={index2} size={props.size} key={index2} img={img2} value={index2} i={board[index1].props.i} j={board[index1].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
-
-                let tempboard = board;
                 // tempboard.pop();
                 tempboard[index1] = newItem1;
                 tempboard[index2] = newItem2;
@@ -145,8 +162,6 @@ function GameBoard(props) {
                 let newItem1 = <GameBoardItem size={props.size} id={index1} key={index1} img={img} value={index1} i={board[index2].props.i} j={board[index2].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
                 let img2 = board[index2].props.img;
                 let newItem2 = <GameBoardItem size={props.size} id={index2} key={index2} img={img2} value={index2} i={board[index1].props.i} j={board[index1].props.j} image={'https://i.imgur.com/YLWsY4G.jpg'}></GameBoardItem>
-
-                let tempboard = board;
                 // tempboard.pop();
                 tempboard[index1] = newItem1;
                 tempboard[index2] = newItem2;
@@ -155,6 +170,7 @@ function GameBoard(props) {
                 setRerender(!temppos)
             }
         }
+        checkSolved(tempboard);
     }
 
     useEffect(() => {
@@ -208,12 +224,15 @@ function GameBoard(props) {
     }, [board, position, rerender]);
     return (
         <div style={{ height: '0', width: '40%', paddingBottom: '40%', position: 'relative' }}>
+            <div>
+               level {props.size-2}
+            </div>
             <div style={{ height: '0', width: '100%', paddingBottom: '100%', position: 'relative' }}>
                 {board}
             </div>
             <button className="fancyButton" onClick={e => {shuffle()
                 console.log('Shuffle')
-            }}>shuffle</button>
+            }}>{shuffled?'reshuffle':'start'}</button>
         </div>
     );
 }
